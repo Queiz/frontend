@@ -7,13 +7,16 @@ let AddButton = document.querySelector('input[type=button]');
 
 let number = 2;
 
-function addNameToTable(){
+function addNameToTable() {
     number++;
 
-    if (FirstName.value !== "" && LastName.value !== ""){
+    if (FirstName.value !== "" && LastName.value !== "") {
         // Створюємо новий рядок
         let tr = document.createElement('tr');
-        tr.textContent = number.toString();
+
+        // Створюємо стовпець для номера рядка
+        let numberTd = document.createElement('td');
+        numberTd.textContent = number.toString();
 
         // Створюємо стовпець для імені
         let firstNameTd = document.createElement('td');
@@ -24,11 +27,13 @@ function addNameToTable(){
         lastNameTd.textContent = LastName.value;
 
         // Додаємо стовпці в рядок, а рядок до таблиці
+        tr.appendChild(numberTd);
         tr.appendChild(firstNameTd);
         tr.appendChild(lastNameTd);
         table.appendChild(tr);
+    } else {
+        alert('Заповніть обидва рядки');
     }
-    else alert('Заповніть обидва рядки');
 }
 
 AddButton.addEventListener('click', addNameToTable);
