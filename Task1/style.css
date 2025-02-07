@@ -1,0 +1,13 @@
+tr,td,table {
+    border-collapse: collapse;
+    border: 1px solid black;
+}
+
+#Headline{
+    background-color: grey;
+    color: white;
+}
+
+input[type = "button"]{
+    width: 170px;
+}

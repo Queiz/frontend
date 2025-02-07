@@ -1,0 +1,9 @@
+img {
+    height: 200px;
+    cursor: pointer;
+    transition: transform 1s; /* Додаємо плавний перехід для обертання */
+}
+
+img.rotate {
+    transform: rotateY(90deg); /* Обертання по горизонталі */
+}
