@@ -13,21 +13,27 @@ function createGrid(rows, cols) {
 
 createGrid(rows, cols);
 
-let squares = document.querySelectorAll('.square')
+let squares = document.querySelectorAll('.square');
 
-let colorButtons = document.querySelectorAll('button')
+let colorButtons = document.querySelectorAll('button');
 
-let currentColor;
+let currentColor = null;
 
 function chooseColor(color) {
-    if (currentColor !== color.id){
+    let selectedColor = color.style.backgroundColor; // Отримуємо реальний колір
+
+    if (currentColor !== selectedColor) {
         color.style.border = '4px solid black';
 
         if (currentColor) {
-            document.getElementById(currentColor).style.border = 'none';
+            colorButtons.forEach(btn => {
+                if (btn.style.backgroundColor === currentColor) {
+                    btn.style.border = 'none';
+                }
+            });
         }
 
-        currentColor = color.id;
+        currentColor = selectedColor; // Зберігаємо колір
     }
 }
 
@@ -35,10 +41,12 @@ colorButtons.forEach(button => {
     button.addEventListener('click', () => {
         chooseColor(button);
     });
-})
+});
 
 squares.forEach(square => {
     square.addEventListener('click', () => {
-        square.style.backgroundColor = currentColor;
-    })
-})
+        if (currentColor) {
+            square.style.backgroundColor = currentColor; // Використовуємо правильний колір
+        }
+    });
+});
